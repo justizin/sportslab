@@ -1,0 +1,21 @@
+# data archive: never committed (see docs/sources.md for licenses)
+data/
+
+# python
+.venv/
+__pycache__/
+*.pyc
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.ruff_cache/
+
+# notebooks / editors
+__marimo__/
+.ipynb_checkpoints/
+.vscode/
+.idea/
+
+# os
+.DS_Store

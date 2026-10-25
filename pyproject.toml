@@ -1,0 +1,52 @@
+[project]
+name = "sportslab"
+version = "0.1.0"
+description = "Learn ML and statistics through sports data, on top of a local historical archive you own."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.12"
+authors = [{ name = "Justin Alan Ryan" }]
+dependencies = [
+    "duckdb>=1.1,<2",  # 2.x wheels need AVX2; this host is Ivy Bridge
+    "polars[rtcompat]>=1.10",
+    "pandas>=2.2",
+    "pyarrow>=17",
+    "scikit-learn>=1.5",
+    "statsmodels>=0.14",
+    "matplotlib>=3.9",
+    "marimo>=0.9",
+    "httpx>=0.27",
+    "typer>=0.12",
+    "rich>=13",
+    "nflreadpy>=0.1.5",
+    "statsbombpy>=1.14",
+]
+
+[project.optional-dependencies]
+nba = ["nba_api>=1.5"]
+statcast = ["pybaseball>=2.2"]
+boost = ["xgboost>=2.1", "lightgbm>=4.5"]
+bayes = ["pymc>=5.16", "arviz>=0.19"]
+
+[project.scripts]
+sportslab = "sportslab.cli:app"
+
+[dependency-groups]
+dev = ["pytest>=8", "ruff>=0.6"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["sportslab"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff.lint]
+ignore = ["B008", "RUF012"]
