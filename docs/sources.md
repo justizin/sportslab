@@ -10,10 +10,10 @@ None of this data is committed to the repository or redistributed by it.
 | [Retrosheet](https://www.retrosheet.org/) | MLB | game (logs), play (event files) | logs 1871–2025; events 1908–2025 | 380 MB | Copyright Retrosheet, free for any use with the notice below | direct zip |
 | [nflverse-data](https://github.com/nflverse/nflverse-data) | NFL | play, game, player, roster | pbp 1999–2026 | 489 MB | CC-BY-4.0 | GitHub release assets |
 | [Cricsheet](https://cricsheet.org/) | cricket | ball | 2001–2026, 23,132 matches | 148 MB | ODC-By | direct zip |
-| [StatsBomb open data](https://github.com/statsbomb/open-data) | soccer | event | 116 competition-seasons | several GB | StatsBomb public data agreement: credit and logo required, non-commercial | sparse git mirror (opt-in) |
+| [StatsBomb open data](https://github.com/statsbomb/open-data) | soccer | event | 80 competition-seasons, 3,961 matches | 14 GB git mirror (events, lineups, matches; no 360) | StatsBomb public data agreement: credit and logo required, non-commercial | sparse git mirror (opt-in) |
 | [football-data.co.uk](https://www.football-data.co.uk/data.php) | soccer | match + odds | 22 divisions, 1993/94–2026/27 | 95 MB, 716 files | Free to download; all rights reserved; do not redistribute | per-division CSVs |
 | [wehoop (sportsdataverse)](https://github.com/sportsdataverse/wehoop-wnba-data) | WNBA | play, game | 2002–2026 | 73 MB | Code MIT; data is ESPN's. Research use, do not redistribute | GitHub release assets |
-| [hoopR (sportsdataverse)](https://github.com/sportsdataverse/hoopR-nba-data) | NBA | play, game | 2002–2026 | ~450 MB | Same as wehoop | GitHub release assets (opt-in) |
+| [hoopR (sportsdataverse)](https://github.com/sportsdataverse/hoopR-nba-data) | NBA | play, game | 2002–2026 | 450 MB, 130 files | Same as wehoop | GitHub release assets (opt-in) |
 
 ## Tables and row counts
 
@@ -32,7 +32,11 @@ None of this data is committed to the repository or redistributed by it.
 | `soccer.results` | 244,929 | partitioned by `season_start`; `match_date` parsed; odds columns are Float64 |
 | `wnba.pbp` | 2,297,117 | partitioned by season |
 | `wnba.team_box` / `wnba.player_box` / `wnba.schedules` | 11,298 / 129,865 / 6,620 | `season_type` 2 = regular season |
-| `soccer.sb_*`, `nba.*` | not fetched | opt-in: `uv run sportslab archive fetch statsbomb hoopr` |
+| `nba.pbp` | 14,224,064 | partitioned by season (opt-in source `hoopr`) |
+| `nba.team_box` / `nba.player_box` / `nba.schedules` | 83,994 / 1,084,972 / 43,562 | |
+| `soccer.sb_events` | 14,874,171 | curated flat columns, partitioned by `competition_id` (opt-in source `statsbomb`) |
+| `soccer.sb_shot_freeze_frames` | 1,397,782 | player positions at each shot |
+| `soccer.sb_matches` / `soccer.sb_lineups` / `soccer.sb_competitions` | 3,961 / 161,958 / 80 | |
 
 ## Required notices
 
